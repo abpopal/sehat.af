@@ -1,0 +1,30 @@
+  
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+{% block navbar %}
+
+{% include "navbar.html" %}
+
+{% endblock %}
+<div class="container">
+    <div class="jumbotron">
+        <h3>Edit Profile</h3>
+    </div>
+</div>
+<div class="container">
+    <div class="jumbotron">
+        <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-skin" type="submit">Save</button>
+        <a href="{% url 'change_password' %}" class="btn btn-skin">change password</a>
+        </form>
+
+
+    </div>
+</div>
+
+{% endblock %}

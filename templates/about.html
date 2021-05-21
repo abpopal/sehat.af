@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+<body id="page-top" class="index-page">
+<div class="wrap-body">
+	<header>
+		{% load static %}
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+
+
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+
+	<link href="{% static 'css/animate.css' %}" rel="stylesheet" media="all" type="text/css">
+
+
+
+
+    <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+
+		<div class="main-header">
+			{% block navbar %}
+
+			{% include "navbar.html" %}
+
+			{% endblock %}
+			<div class="header-text">
+				<div class="header-text-inner">
+					<h2 style="color:red">Welcome to Online Blood Donation</h2>
+					<p style="color:red">You can be saved and you can also save a life</p>
+				</div>
+			</div>
+
+			<div id="scroll-page-content">
+				<a href="#page-content" class="scroller">
+					<div class="scroller-button">
+						<i class="fa fa-angle-down"></i>
+					</div>
+				</a>
+			</div>
+		</div>
+	</header>
+<section id="page-content" class="index-page">
+
+		<!-- ////////////Content Box 01 -->
+		<section class="box-content box-1">
+			<div class="">
+				<div class="heading wow fadeInUp" data-wow-delay=".1s" data-wow-duration="1s">
+					<h2>Search Engine</h2>
+					<hr class="line">
+					<div class="intro">you can search for the desired blood below</div>
+   				 </div>
+
+
+    		</div>
+			<div class="container-fluid">
+        <center>
+        <div class="card text-left mt-3" style="width: 35rem;">
+          <div class="card-body">
+
+        <form class="form-group" action = "{% url 'search' %}" method = "GET">
+
+         <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search" required><br>
+         <center><button type="submit" class="btn btn-skin">Search</button></center>
+    </form>
+      </div>
+    </div>
+  </center>
+</div>
+
+		</section>
+
+		<section class="box-content box-7 box-style-2">
+			<div class="container">
+				<div class="heading wow fadeInDown" data-wow-delay=".1s" data-wow-duration="1s">
+					<h2>Featured Donors</h2>
+					<hr class="line">
+					<div class="intro">Our Best Donors are listed below</div>
+				</div>
+				<div class="content wow fadeInUp" data-wow-delay=".1s" data-wow-duration="1s">
+					<div id="owl-branding" class="owl-carousel">
+						<div class="item">
+							<img src="{% static 'img/afghan.png' %}" class="img-responsive"/>
+						</div>
+						<div class="item">
+							<img src="{% static 'img/cure.jpg' %}" class="img-responsive"/>
+						</div>
+						<div class="item">
+							<img src="{% static 'img/dk.jpg' %}" class="img-responsive"/>
+						</div>
+						<div class="item">
+							<img src="{% static 'img/american.jpeg' %}" class="img-responsive"/>
+						</div>
+						<div class="item">
+							<img src="{% static 'img/global.jpg' %}" class="img-responsive"/>
+						</div>
+						<div class="item">
+							<img src="{% static 'img/mussa.jpg' %}" class="img-responsive"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</section>
+
+	<footer id="footer">
+		<div class="container">
+			<div class="wrap-footer">
+				<div class="row">
+					<div class="col-md-7">
+						<div class="footer-contact-form">
+							<h2 class="footer-title">Leave A Message</h2>
+							<form name="" method="post" action="#">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<input type="text" class="form-control input-lg" name="name" id="name" placeholder="Enter name" required="required" />
+										</div>
+										<div class="form-group">
+											<input type="email" class="form-control input-lg" name="email" id="email" placeholder="Enter email" required="required" />
+										</div>
+										<div class="form-group">
+											<input type="text" class="form-control input-lg" name="subject" id="subject" placeholder="Subject" required="required" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<textarea name="message" id="message" class="form-control" rows="4" cols="25" required="required" placeholder="Message" style="height: 190px;"></textarea>
+										</div>
+									</div>
+								</div>
+								<button type="submit" class="btn btn-skin" name="submitcontact" id="submitcontact">Submit</button>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="footer-contact-info">
+							<div class="contact-info-item">
+								<div class="row">
+									<div class="col-md-1">
+										<div class="contact-info-icon">
+											<i class="fa fa-map-marker"></i>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<h3>Location</h3>
+										<p>Kabul, Afghanistan</p>
+									</div>
+								</div>
+							</div>
+							<div class="contact-info-item">
+								<div class="row">
+									<div class="col-md-1">
+										<div class="contact-info-icon">
+											<i class="fa fa-phone"></i>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<h3>call</h3>
+										<p>  0780875692</p>
+									</div>
+								</div>
+							</div>
+							<div class="contact-info-item">
+								<div class="row">
+									<div class="col-md-1">
+										<div class="contact-info-icon">
+											<i class="fa fa-envelope"></i>
+										</div>
+									</div>
+									<div class="col-md-10">
+										<h3>Email</h3>
+										<p> b.popal@gmail.com</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bottom-footer">
+				<ul class="list-inline footer-link link">
+					<li><a href="#">Facebook</a></li>
+					<li><a href="#">Instagram</a></li>
+					<li><a href="#">Twitter</a></li>
+					<li><a href="#">Google +</a></li>
+					<li><a href="#">Pinterest</a></li>
+				</ul>
+				<div class="copyright">
+					<span>Copyright © 2020 </span>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<div id="page-top"><a href="#page-top" class="btn btn-toTop"><i class="fa fa-angle-double-up"></i></a></div>
+
+	{% load static %}
+	<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/jquery.localScroll.min.js' %}"></script>
+	<script src="{% static 'js/jquery.scrollTo.min.js' %}"></script>
+	<script src="{% static 'js/SmoothScroll.js' %}"></script>
+	<script src="{% static 'js/wow.min.js' %}"></script>
+
+
+	<script src="{% static 'js/owl.carousel.js' %}"></script>
+
+
+	<script src="{% static 'js/main.js' %}"></script>
+
+</div>
+
+</body>
+{% endblock %}

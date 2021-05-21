@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>profile</title>
+{% endblock head %}
+
+
+{% block content %}
+{% block navbar %}
+
+{% include "navbar.html" %}
+
+{% endblock %}
+
+
+
+
+        {% if user.is_authenticated %}
+        {% if user.is_hospital %}
+        <div class="container">
+        <div class="jumbotron">
+        <h1>Hospital Profile</h1>
+        </div>
+        </div>
+
+        <div class="container">
+            <div class="jumbotron">
+                <center> <h3>{{hospital.name}}</h3></center>
+
+
+
+            <table class="table">
+            </tr>
+            <tr>
+                <td><h5>Location: {{hospital.loc_id.loc_name}} </h5></td>
+            </tr>
+            <tr>
+                <td><h5> Contact: {{hospital.contact}} </h5></td>
+            </tr>
+            <tr>
+                <td><h5> Email: {{hospital.Email}}</h5> </td>
+            </tr>
+        </table>
+            <a href="{% url 'edit_profile' %}" class="btn btn-skin">Edit profile</a>
+        <a href="{% url 'delete_account' %}" class="btn btn-skin">delete my account</a>
+
+        </div>
+            </div>
+        </div>
+
+
+
+        {% else %}
+        <div class="container">
+            <div class="jumbotron">
+        <h1>My Profile</h1>
+        </div>
+            <center><h3> {{ puser.name }}</h3></center>
+        <table class="table">
+
+            <tr>
+                <td>
+                    <h5>Contact: {{puser.contact}}</h5>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>Email: {{puser.Email}} </h5>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>Location: {{puser.loc_id.loc_name}}</h5>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>Birthdate: {{puser.birthdate}}</h5>
+                </td>
+            </tr>
+            {% if user.is_donor %}
+            <tr>
+                <td>
+                    <h5>Donor: {{donor.bg_id.bg_name}}</h5>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>Approve status: {{donor.approved}}</h5>
+                </td>
+            </tr>
+
+            {% endif %}
+        </table>
+            <a href="{% url 'edit_profile' %}" class="btn btn-skin">Edit profile</a>
+        {% if donor == None and not user.is_hospital %}
+        <a href="{% url 'become_donor' %}" class="btn btn-skin">Become A Donor</a>
+        {% endif %}
+        <a href="{% url 'delete_account' %}" class="btn btn-skin">delete my account</a>
+        </div>
+
+        {% endif %}
+
+
+
+        {% endif %}
+
+
+
+{% endblock %}

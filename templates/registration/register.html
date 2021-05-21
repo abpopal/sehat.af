@@ -1,0 +1,27 @@
+{% load crispy_forms_tags %}
+{% include 'html_dependencies.html' %}
+
+<div class="container">
+    <center>
+
+        <div align="left" style="width: 400px; height: 100%; ">
+            <br><br>
+        <h2 align="left">Register</h2>
+        <br><br><br>
+
+    <form method="post">
+  {% csrf_token %}
+
+ {{ registration_form|crispy}}
+  <button class="btn btn-skin"type="submit">register</button>
+        <a class="btn btn-skin" href="{% url 'home' %}">Cancel</a>
+</form>
+
+
+</div>
+
+    </center>
+
+
+</div>
+

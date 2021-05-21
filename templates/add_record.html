@@ -1,0 +1,29 @@
+  
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+{% block navbar %}
+
+{% include "navbar.html" %}
+
+{% endblock %}
+<div class="container">
+    <div class="jumbotron">
+        <h3>Add New Record</h3>
+    </div>
+</div>
+<div class="container">
+    <div class="jumbotron">
+        <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-skin" type="submit">Save</button>
+            <a href="{% url 'profile' %}" class="btn btn-skin">Cancel</a>
+    </form>
+    </div>
+
+</div>
+
+{% endblock %}

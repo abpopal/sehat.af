@@ -1,0 +1,118 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+{% block navbar %}
+
+{% include "navbar.html" %}
+
+{% endblock navbar %}
+
+    {% load static %}
+
+
+
+
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+
+
+ <div class="container" >
+        <div class="jumbotron">
+        <h2>Search Result</h2>
+    </div>
+    </div>
+
+{% if record %}
+
+<div class="container">
+                <div class="table100 ver2 m-b-110">
+                    <div class="table100-head">
+                    <table>
+                        <thead>
+                            <tr class="row100 head">
+                                <th class="cell100 column1">
+                                    Blood Type
+                                </th>
+                                <th class="cell100 column2"> Donor Name</th>
+                                <th class="cell100 column3">       </th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                    </div>
+                    <div class="table100-body js-pscroll">
+                        <table>
+                            <tbody>
+                                {% for each in record %}
+
+            <tr class="row100 body">
+
+
+            {% if each.d_id == None %}
+                <td class="cell100 column1">{{each.bg_id.bg_name}}</td>
+                <td class="cell100 column2">{{each.bb_id.h_id.name}} </td>
+            {% endif %}
+
+            {% if each.d_id != None %}
+                <td class="cell100 column1"> {{each.bg_id.bg_name}}</td>
+                <td class="cell100 column2">{{each.d_id.user_id.name}}</td>
+
+            {% endif %}
+            <td class="cell100 column3">
+                {% if user.is_authenticated %}
+                <a href="{% url 'request' each.record_id %}" class="btn btn-skin">request</a>
+                {% else %}
+                <p>Login to request</p>
+                {% endif %}
+            </td>
+            </tr>
+
+        {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+</div>
+
+
+<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+
+
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+
+	<script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			var ps = new PerfectScrollbar(this);
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+
+
+	</script>
+	<script src="{% static 'js/main2.js' %]"></script>
+
+{% else %}
+<div class="container">
+    <h3>No Records</h3>
+</div>
+
+
+{% endif %}
+
+
+{% endblock content %}
+

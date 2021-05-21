@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% block navbar %}
+
+{% include "navbar.html" %}
+
+{% endblock %}
+<div class="container">
+    <div class="jumbotron">
+        <h2> your request is sent</h2>
+        <a href="{% url 'home' %}" class="btn btn-skin">Okay</a>
+
+    </div>
+
+</div>
+
+{% endblock %}

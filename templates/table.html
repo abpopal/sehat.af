@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+
+
+
+{% endblock %}
+{% block content %}
+{% block navbar %}
+
+{% include "navbar.html" %}
+
+{% endblock %}
+
+{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+
+
+
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main2.css' %}">
+ <div class="container">
+        <div class="jumbotron">
+        <h2>My Notifications</h2><br>
+        {% if reqs %}
+        <table class="table">
+            <tr>
+                <th>
+                    Request Information
+                </th>
+                <th> status</th>
+                <th>contact INFO</th>
+            </tr>
+            {% for req in reqs %}
+            <tr>
+
+        {% if req.req_id.status == 'Accepted' %}
+
+            {% if req.req_id.record_id.bb_id != None %}
+                <td>your request for {{ req.req_id.record_id.bg_id.bg_name}} from {{ req.req_id.record_id.bb_id.h_id.name}} has been accepted </td>
+                <td>{{ req.req_id.status}}</td>
+                <td>{{req.req_id.record_id.bb_id.h_id.contact}}</td>
+            {% elif req.req_id.record_id.d_id != None %}
+                <td>your request for {{ req.req_id.record_id.bg_id.bg_name}} from {{ req.req_id.record_id.d_id.user_id.name}} has been accepted </td>
+                <td>{{ req.req_id.status}}</td>
+                <td>{{req.req_id.record_id.d_id.user_id.contact}}</td>
+                {% endif %}
+
+        {% elif req.req_id.status == 'Rejected' %}
+                {% if req.req_id.record_id.bb_id != None %}
+                <td>your request for {{ req.req_id.record_id.bg_id.bg_name}} from {{ req.req_id.record_id.bb_id.h_id.name}} has been rejected </td>
+
+                <td>{{ req.req_id.status}}</td>
+                <td>NOT AVAILABLE</td>
+            {% elif req.req_id.record_id.d_id != None %}
+                <td>your request for {{ req.req_id.record_id.bg_id.bg_name}} from {{ req.req_id.record_id.d_id.user_id.name}} has been accepted </td>
+                <td>{{ req.req_id.status}}</td>
+                <td>NOT AVAILABLE</td>
+                {% endif %}
+
+        {% endif %}
+
+
+
+            </tr>
+            {% endfor %}
+        </table>
+
+
+
+
+
+
+        {% else %}
+        <p>NO NEW NOTIFICATIONS</p>
+        {% endif %}
+    </div>
+    </div>
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100 ver2 m-b-110">
+                    <div class="table100-head">
+                    <table>
+                        <thead>
+                            <tr class="row100 head">
+                                <th>
+                                    Request Information
+                                </th>
+                                <th> status</th>
+                                <th>contact INFO</th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                    </div>
+                    <div class="table100-body js-pscroll">
+                        <table>
+                            <tbody>
+                                {% for req in reqs %}
+                                 <tr class="row100 body">
+
+                                    {% if req.req_id.status == 'Accepted' %}
+
+                                    {% if req.req_id.record_id.bb_id != None %}
+                                        <td>your request for {{ req.req_id.record_id.bg_id.bg_name}} from {{ req.req_id.record_id.bb_id.h_id.name}} has been accepted </td>
+                                        <td>{{ req.req_id.status}}</td>
+                                        <td>{{req.req_id.record_id.bb_id.h_id.contact}}</td>
+                                    {% elif req.req_id.record_id.d_id != None %}
+                                        <td>your request for {{ req.req_id.record_id.bg_id.bg_name}} from {{ req.req_id.record_id.d_id.user_id.name}} has been accepted </td>
+                                        <td>{{ req.req_id.status}}</td>
+                                        <td>{{req.req_id.record_id.d_id.user_id.contact}}</td>
+                                     {% endif %}
+                                     {% elif req.req_id.status == 'Rejected' %}
+                                     {% if req.req_id.record_id.bb_id != None %}
+                                        <td>your request for {{ req.req_id.record_id.bg_id.bg_name}} from {{ req.req_id.record_id.bb_id.h_id.name}} has been rejected </td>
+
+                                        <td>{{ req.req_id.status}}</td>
+                                        <td>NOT AVAILABLE</td>
+                                     {% elif req.req_id.record_id.d_id != None %}
+                                        <td>your request for {{ req.req_id.record_id.bg_id.bg_name}} from {{ req.req_id.record_id.d_id.user_id.name}} has been accepted </td>
+                                        <td>{{ req.req_id.status}}</td>
+                                        <td>NOT AVAILABLE</td>
+                                     {% endif %}
+
+                                        {% endif %}
+
+                                 </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+
+	<script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			var ps = new PerfectScrollbar(this);
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+
+
+	</script>
+	<script src="{% static 'js/main.js' %]"></script>
+{% endblock %}

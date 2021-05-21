@@ -1,0 +1,36 @@
+
+{% load crispy_forms_tags %}
+{% include 'html_dependencies.html' %}
+
+
+
+    <div class="container" >
+        <center>
+
+
+             <div align="left" style="width: 400px; height: 500px background-color: red;  ">
+                    <br><br>
+                 <h1 align="left">Log In</h1>
+                 <br><br><br>
+                 <div ></div>
+                   <form method="post">
+  {% csrf_token %}
+
+ {{ form|crispy}}
+  <button type="submit" class="btn btn-skin">LogIn</button>
+</form>
+        <p>Dont have an account? <a href="{% url 'register'%}"> Create </a></p>
+            </div>
+        </center>
+
+
+
+
+
+
+</div>
+
+
+
+
+
